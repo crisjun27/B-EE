@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29123.88
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bee-App", "Bee-App\Bee-App.csproj", "{29B89F4E-9755-41E3-A224-0088A83CFECD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{29B89F4E-9755-41E3-A224-0088A83CFECD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29B89F4E-9755-41E3-A224-0088A83CFECD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29B89F4E-9755-41E3-A224-0088A83CFECD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29B89F4E-9755-41E3-A224-0088A83CFECD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {544D3A9C-A062-4DC9-A00E-FF65F1ADE535}
+	EndGlobalSection
+EndGlobal

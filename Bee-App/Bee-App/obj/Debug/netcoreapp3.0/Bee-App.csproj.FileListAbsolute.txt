@@ -1,0 +1,12 @@
+C:\Users\Cris\Desktop\B-EE App\Bee-App\Bee-App\bin\Debug\netcoreapp3.0\Bee-App.exe
+C:\Users\Cris\Desktop\B-EE App\Bee-App\Bee-App\bin\Debug\netcoreapp3.0\Bee-App.deps.json
+C:\Users\Cris\Desktop\B-EE App\Bee-App\Bee-App\bin\Debug\netcoreapp3.0\Bee-App.runtimeconfig.json
+C:\Users\Cris\Desktop\B-EE App\Bee-App\Bee-App\bin\Debug\netcoreapp3.0\Bee-App.runtimeconfig.dev.json
+C:\Users\Cris\Desktop\B-EE App\Bee-App\Bee-App\bin\Debug\netcoreapp3.0\Bee-App.dll
+C:\Users\Cris\Desktop\B-EE App\Bee-App\Bee-App\bin\Debug\netcoreapp3.0\Bee-App.pdb
+C:\Users\Cris\Desktop\B-EE App\Bee-App\Bee-App\obj\Debug\netcoreapp3.0\Bee-App.csprojAssemblyReference.cache
+C:\Users\Cris\Desktop\B-EE App\Bee-App\Bee-App\obj\Debug\netcoreapp3.0\Bee-App.csproj.CoreCompileInputs.cache
+C:\Users\Cris\Desktop\B-EE App\Bee-App\Bee-App\obj\Debug\netcoreapp3.0\Bee-App.AssemblyInfoInputs.cache
+C:\Users\Cris\Desktop\B-EE App\Bee-App\Bee-App\obj\Debug\netcoreapp3.0\Bee-App.AssemblyInfo.cs
+C:\Users\Cris\Desktop\B-EE App\Bee-App\Bee-App\obj\Debug\netcoreapp3.0\Bee-App.dll
+C:\Users\Cris\Desktop\B-EE App\Bee-App\Bee-App\obj\Debug\netcoreapp3.0\Bee-App.pdb

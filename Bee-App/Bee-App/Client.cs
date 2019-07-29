@@ -16,15 +16,20 @@ class Client
     TcpClient client;
     bool ownsClient;
     int clientId;
+    string currentUser;
     public TrimMessage trimMsg;
-    public Dictionary<int, string> clients;
+    public Dictionary<int, string> clients = new Dictionary<int, string>();
+    List<TcpClient> listTcpClients;
+    public const string END_LINE = "\r\n";
+    public const string CURSOR = " > ";
 
-    public Client(TcpClient client, bool ownsClient)
+    public Client(TcpClient client,Object obj)
     {
         this.client = client;
-        this.ownsClient = ownsClient;
+        this.ownsClient = false;
         this.trimMsg = new TrimMessage();
         this.clients = new Dictionary<int, string>(); 
+        this.listTcpClients =  (List<TcpClient>)obj;
     }
 
     public async Task HandleIncomingClientAsync()
@@ -44,9 +49,9 @@ class Client
                         var newdata = trimMsg.CleanMessage(data); 
                         if (newdata != "")
                         { 
-                            await sw.WriteLineAsync($"Message:" + data).ConfigureAwait(false);
-                            await sw.FlushAsync().ConfigureAwait(false);
-                            MessageReceived(client, data);
+                            if(MessageReceived(client, data)){ 
+                                SendToAllClients(newdata); 
+                            } 
                         } 
                     }
                 } 
@@ -60,35 +65,58 @@ class Client
                 client = null;
             }
         }
+    }  
+
+    public void SendToAllClients(string message)
+    {
+        var user = GetUser();
+        string timeStamp = GetTimestamp(DateTime.Now);
+        var composemessge = $"USER: {user} MESSAGE: {message} {timeStamp}" + END_LINE;
+          
+        Byte[] reply = System.Text.Encoding.ASCII.GetBytes(composemessge);
+        listTcpClients.ForEach(cl =>
+        {
+            Task.Run(async () => 
+                await cl.GetStream().WriteAsync(reply, 0, reply.Length)
+                );
+        }); 
     } 
 
-    private void MessageReceived(TcpClient c, string message)
+    private bool MessageReceived(TcpClient c, string message)
     {  
         if (!ownsClient)
         {
             HandleLogin(c, message);
-            return;
+            return false;
         }
 
         var ip = ((IPEndPoint)c.Client.RemoteEndPoint).Address.ToString();
         string timeStamp = GetTimestamp(DateTime.Now);
+        var user = GetUser();
 
-        var user = clients[clientId];
         Console.WriteLine($"SENDER:{user} MESSAGE:{message} DATE:{timeStamp}"); 
+        return true;
     }
      
     private void HandleLogin(TcpClient c, string message)
     {
-        var ip = ((IPEndPoint)c.Client.RemoteEndPoint).Address.ToString(); 
         this.ownsClient = true;
-        this.clientId = clientId+ 1;
+        this.currentUser = message;
+        this.clientId = clientId + 1;
         this.clients.Add(clientId, message);
+
+        var ip = ((IPEndPoint)c.Client.RemoteEndPoint).Address.ToString(); 
         Console.WriteLine($"USER {message} is now connected:" + Server.END_LINE);
     }
 
     public static String GetTimestamp(DateTime value)
     {
         return value.ToString("yyyyMMddHHmmssffff");
+    }
+
+    public string GetUser()
+    {
+        return this.clients[clientId];
     }
 }
 

@@ -21,10 +21,6 @@ class Server
     TrimMessage trimMsg;
     List<TcpClient> listTcpClients = new List<TcpClient>(); 
 
-    // public delegate void ConnectionEventHandler(TcpClient c);
-    // public event ConnectionEventHandler ClientConnected;
-    // public delegate void MessageReceivedEventHandler(TcpClient c, string message);
-    // public event MessageReceivedEventHandler MessageReceived;
     private Socket serverSocket;
 
     public Server(IPAddress ip, int port)
@@ -55,7 +51,7 @@ class Server
                 Console.WriteLine("Waiting for a connection...");
                 TcpClient tcpClient = await server.AcceptTcpClientAsync().ConfigureAwait(false); 
                 listTcpClients.Add(tcpClient);
-                var cw = new Client(tcpClient, false); 
+                var cw = new Client(tcpClient, listTcpClients); 
                 cw.HandleIncomingClientAsync().NoWarning();  
             }
         }
